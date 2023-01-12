@@ -1,5 +1,5 @@
 use std::io;
-use std::io::{stdout, Write};
+use std::io::{Write};
 #[allow(unused_parens)]
 fn main() {
     /* 
@@ -12,7 +12,7 @@ fn main() {
     let mut b = String::new();
 
     print!("> Enter your 1* number: ");
-    stdout().flush().unwrap();
+    io::stdout().flush().unwrap();
     io::stdin()
         .read_line(&mut a)
         .expect("Some Error brr")
@@ -20,7 +20,7 @@ fn main() {
     ;
 
     print!("> Enter your 2* number: ");
-    stdout().flush().unwrap();
+    io::stdout().flush().unwrap();
     io::stdin()
         .read_line(&mut b)
         .expect("Some Error brr")
@@ -30,14 +30,13 @@ fn main() {
     let mut a:u32 = a.trim().parse().expect("Couldn't convert to string");
     let mut b:u32 = b.trim().parse().expect("Couldn't convert to string");
     assert!(a != 0 || b!=0, "Number is 0");
-    while  b != 0{
-        if (a > b) {
+    while  a != 0{
+        if (a < b) {
             let t = b;
             b = a;
             a = t;
         }
         a = a%b
     }
-    println!("The gread common divisor is: {a}");
-
+    println!("The gread common divisor is: {b}");
 }
